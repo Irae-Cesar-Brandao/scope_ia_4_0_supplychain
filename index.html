@@ -1,0 +1,865 @@
+<!-- SUPPLY CHAIN 4.0 AVANÇADO -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supply Chain 4.0 - Inteligência Preditiva  -  </title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Segoe UI;
+    background:#e3f2fd;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
+
+canvas{
+    max-width:100%;
+   height:auto !important;
+}
+
+.sidebar button{
+    padding:10px 15px;
+    margin:8px;
+    background:#1565c0;
+    border:none;
+    color:white;
+    cursor:pointer;
+    border-radius:6px;
+}
+
+.sidebar {
+    text-align:center;
+}
+
+
+.main{
+    flex:1;
+    padding:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:15px;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+
+input{
+    width:100%;
+    padding:6px;
+}
+
+
+
+/*-------------------------------------------
+ESTILIZAÇÃO DA ORIENTAÇÃO 
+-------------------------------------------*/
+.footer-estudo{
+    background:#0d47a1;
+    color:white;
+    padding:40px;
+    margin-top:50px;
+}
+
+.footer-container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.footer-estudo h2,
+.footer-estudo h3{
+    margin-top:30px;
+}
+
+.footer-estudo table{
+    width:100%;
+    border-collapse:collapse;
+    margin:20px 0;
+    background:white;
+    color:#0d47a1;
+}
+
+.footer-estudo th,
+.footer-estudo td{
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:left;
+}
+
+.footer-estudo th{
+    background:#1565c0;
+    color:white;
+}
+
+.footer-estudo ul{
+    margin-left:20px;
+}
+
+.referencias{
+    font-size:0.9em;
+}
+
+.assinatura{
+    margin-top:40px;
+    font-style:italic;
+}
+
+/*-----------------------------------------------------------
+EXPLICAÇÃO MATEMÁTICA DO MODELO
+-----------------------------------------------------------*/
+
+.explicacao-modelo{
+    margin-top:50px;
+    padding:30px;
+    background:#ffffff;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.explicacao-modelo h2{
+    color:#0d47a1;
+}
+
+.explicacao-modelo h3{
+    margin-top:25px;
+    color:#1565c0;
+}
+
+.formula{
+    background:#e3f2fd;
+    padding:10px;
+    font-weight:bold;
+    border-left:5px solid #0d47a1;
+    margin:10px 0;
+}
+
+
+/* ===============================
+RESPONSIVIDADE MOBILE
+=============================== */
+
+@media (max-width:768px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        text-align:center;
+    }
+
+    .main{
+        padding:30px;
+    }
+
+    .footer-estudo{
+        padding:25px;
+    }
+
+    .footer-estudo table{
+        font-size:12px;
+    }
+
+}
+</style>
+
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+    <h2>SCOPE-IA 4.0</h2>
+    <h3>Sistema de Controle Operacional Preditivo Estruturado com IA</h3>
+    <h5>Desenvolvedor: Iraê César Brandão</h5>
+    <h5>Elaborado em: 23 fev. 2026</h5>
+
+    <div class="botoes">
+        <button onclick="recalcularSistema()">Atualizar Métricas</button>
+        <button onclick="otimizar()">Rodar Algoritmo Genético</button>
+        <button onclick="restaurarMetricasPadrao()">Restaurar Métricas Padrão</button>
+        <button onclick="exportarRelatorio()">Exportar PDF</button>
+        <button onclick="exportarExcel()">Exportar Excel</button>
+        <button onclick="gerarRelatorioExecutivo()">Relatório Executivo Estratégico</button>
+    </div>
+
+
+
+
+<div class="main">
+    <h1 style= "color: blue;">DASHOBOARD EXECUTIVO</h1>
+    <h2 id="indicadorGlobal"></h2>
+    <div class="grid" id="etapas"></div>
+    <canvas id="grafico"></canvas>
+
+
+<!-- ----------------------------------------------------------------------- 
+ORIENTAÇÕES COMPLETAS SOBRE O SISTEMA 
+ ----------------------------------------------------------------------- -->
+
+<footer class="footer-estudo">
+
+<div class="footer-container">
+
+<h2>Estudos sobre o Impacto da Inteligência Artificial na Gestão da Cadeia de Suprimentos</h2>
+
+
+<p>
+A Inteligência Artificial (IA) atua como ferramenta estratégica transversal aplicável a praticamente todos os processos de gestão. 
+Na Cadeia de Suprimentos (Supply Chain Management – SCM), a IA transforma um sistema tradicionalmente reativo 
+em um modelo preditivo, adaptativo e orientado por dados.
+</p>
+
+<p>
+A cadeia de suprimentos não é um sistema isolado: inicia na identificação da demanda, passa pelo planejamento estratégico, 
+aquisição, produção, armazenamento, distribuição, atendimento ao cliente e logística reversa. 
+A IA fortalece essa integração sistêmica ao reduzir incertezas, prever demandas e otimizar decisões.
+</p>
+
+<hr>
+
+<h3>Aplicação da IA nas Etapas da Cadeia</h3>
+
+<table>
+<tr>
+<th>Etapa</th>
+<th>Aplicações de IA</th>
+</tr>
+
+<tr>
+<td><b>[E1] Planejamento</b></td>
+<td>
+Previsão de demanda com aprendizado de máquina;<br>
+Simulações de risco;<br>
+Ajuste automático de estoque.
+</td>
+</tr>
+
+<tr>
+<td><b>[E2] Aquisição</b></td>
+<td>
+Avaliação preditiva de fornecedores;<br>
+Modelos de risco de fornecimento;<br>
+Classificação por confiabilidade e custo.
+</td>
+</tr>
+
+<tr>
+<td><b>[E3] Produção</b></td>
+<td>
+Manutenção preditiva;<br>
+Otimização de programação;<br>
+Controle de qualidade com visão computacional.
+</td>
+</tr>
+
+<tr>
+<td><b>[E4] Entrega</b></td>
+<td>
+Roteirização inteligente;<br>
+Monitoramento em tempo real;<br>
+Otimização logística.
+</td>
+</tr>
+
+<tr>
+<td><b>[E5] Logística Reversa</b></td>
+<td>
+Análise de devoluções;<br>
+Classificação automatizada;<br>
+Otimização de reaproveitamento.
+</td>
+</tr>
+</table>
+
+<hr>
+
+<h3>Impacto nos Macroprocessos SCM</h3>
+
+<table>
+<tr>
+<th>Macroprocesso</th>
+<th>Impacto Estratégico da IA</th>
+</tr>
+
+<tr>
+<td><b>CRM</b></td>
+<td>Previsão de comportamento do cliente e personalização.</td>
+</tr>
+
+<tr>
+<td><b>ISCM</b></td>
+<td>Planejamento integrado e redução de custos operacionais.</td>
+</tr>
+
+<tr>
+<td><b>SRM</b></td>
+<td>Monitoramento contínuo de fornecedores e avaliação de risco.</td>
+</tr>
+
+</table>
+
+<hr>
+<hr>
+
+<!-- --------------------------------------------------------- 
+EXPLICAÇÃO FÓRMULAS CIENTÍFICAS
+---------------------------------------------------------- -->
+
+<div class="explicacao-cientifica">
+
+<h2>Formalização Matemática do Modelo Analítico</h2>
+
+<p>
+Considere a Cadeia de Suprimentos composta por \( n \) etapas:
+</p>
+
+\[
+E = \{e_1, e_2, ..., e_n\}
+\]
+
+<h3>1. Eficiência Operacional</h3>
+
+\[
+Ef_i = \frac{T_i^{estimado}}{T_i^{real}}
+\]
+
+<p>
+Onde:
+</p>
+
+<ul>
+<li>\( T_i^{estimado} \) = tempo planejado</li>
+<li>\( T_i^{real} \) = tempo observado</li>
+</ul>
+
+<h3>2. Normalização de Custo</h3>
+
+\[
+C_i^* = \frac{C_i}{C_{max}}
+\]
+
+<h3>3. Função de Score Multicritério</h3>
+
+\[
+S_i = \alpha Ef_i + \beta (1 - C_i^*)
+\]
+
+\[
+\alpha = 0.6 \quad ; \quad \beta = 0.4
+\]
+
+<h3>4. Indicador Global do Sistema</h3>
+
+\[
+S_{global} = \frac{1}{n} \sum_{i=1}^{n} S_i
+\]
+
+<h3>5. Identificação de Gargalo</h3>
+
+\[
+G = \arg\max (T_i^{real})
+\]
+
+<h3>6. Variação Percentual Temporal</h3>
+
+\[
+\Delta_i = \frac{T_i^{real} - T_i^{anterior}}{T_i^{anterior}} \times 100
+\]
+
+<h3>7. Função Objetivo (Otimização)</h3>
+
+\[
+\max F = \sum_{i=1}^{n} S_i
+\]
+
+<p>
+Sujeito a:
+</p>
+
+\[
+T_i^{real} > 0
+\]
+
+<p>
+Este modelo caracteriza-se como um sistema determinístico multicritério linear
+com otimização heurística aplicada à gestão da cadeia de suprimentos.
+</p>
+
+</div>
+</div>
+
+<!-- ----------------------- 
+ REFERÊNCIAS 
+----------------------- -->
+
+<h3>Referências </h3>
+
+<ul class="referencias">
+<li>Choi, T.-M., Chan, H. K., & Yue, X. (2019). IEEE Transactions on Cybernetics.</li>
+<li>Christopher, M. (2016). Logistics & Supply Chain Management (5ª ed.). Pearson.</li>
+<li>Lambert, D. M., Cooper, M. C., & Pagh, J. D. (1998). The International Journal of Logistics Management.</li>
+<li>Lee, H. L. (2004). The Triple-A Supply Chain. Harvard Business Review.</li>
+<li>Sheffi, Y. (2005). The Resilient Enterprise. MIT Press.</li>
+</ul>
+<hr>
+
+
+
+</div>
+
+<footer style="background:#0d47a1; color:white; text-align:center; padding:15px; margin-top:40px; font-size:14px;">
+© 2026 Luck Way® – Iraê César Brandão. 
+Todos os direitos reservados. 
+Este sistema, seus algoritmos, estrutura matemática e arquitetura computacional são protegidos por direitos autorais e legislação aplicável, destinado para fins educacionais e sem fins lucrativos.
+</footer>
+</footer>
+
+</div>
+
+
+<script>
+
+/* ===========================
+   DADOS INICIAIS
+=========================== */
+
+let grafico;
+let baseline = null;
+
+let etapas = [
+{nome:"Recebimento", estimado:5, real:6, realAnterior:7, custo:200},
+{nome:"Produção", estimado:10, real:12, realAnterior:11, custo:500},
+{nome:"Qualidade", estimado:4, real:5, realAnterior:6, custo:150},
+{nome:"Armazenamento", estimado:3, real:4, realAnterior:3, custo:100},
+{nome:"Entrega", estimado:7, real:9, realAnterior:10, custo:300}
+];
+
+let metricasPadrao = [
+{nome:"Recebimento", estimado:5, real:6, realAnterior:7, custo:200},
+{nome:"Produção", estimado:10, real:12, realAnterior:11, custo:500},
+{nome:"Qualidade", estimado:4, real:5, realAnterior:6, custo:150},
+{nome:"Armazenamento", estimado:3, real:4, realAnterior:3, custo:100},
+{nome:"Entrega", estimado:7, real:9, realAnterior:10, custo:300}
+];
+
+/* ===========================
+   RENDERIZAÇÃO
+=========================== */
+
+function render(){
+    let html="";
+    etapas.forEach((e,i)=>{
+        html+=`
+        <div class="card">
+            <h3>${e.nome}</h3>
+            Estimado: <input type="number" value="${e.estimado}" onchange="atualizar(${i},'estimado',this.value)">
+            Real: <input type="number" value="${e.real}" onchange="atualizar(${i},'real',this.value)">
+            Custo: <input type="number" value="${e.custo}" onchange="atualizar(${i},'custo',this.value)">
+            <div id="resultado${i}"></div>
+        </div>
+        `;
+    });
+    document.getElementById("etapas").innerHTML=html;
+}
+
+/* ===========================
+   LÓGICA ANALÍTICA
+=========================== */
+
+function atualizar(i,campo,valor){
+    etapas[i][campo] = Number(valor);
+    recalcularSistema();
+}
+
+function score(e){
+    let eficiencia=e.estimado/e.real;
+    let custoPeso=e.custo/600;
+    return (eficiencia*0.6)+(1-custoPeso)*0.4;
+}
+
+function detectarGargalo(){
+    let maxTempo=Math.max(...etapas.map(e=>e.real));
+    return etapas.find(e=>e.real===maxTempo).nome;
+}
+
+function recalcularSistema(){
+
+    if(!baseline){
+        baseline = JSON.parse(JSON.stringify(etapas));
+    }
+
+    etapas.forEach((e,i)=>{
+        let s = score(e).toFixed(2);
+        let variacao = ((e.real - baseline[i].real) / baseline[i].real * 100).toFixed(1);
+
+        document.getElementById("resultado"+i).innerHTML =
+        `Score: ${s} <br> Variação vs Baseline: ${variacao}%`;
+    });
+
+    atualizarGrafico();
+    verificarAlertas();
+
+    let media = etapas.reduce((acc,e)=>acc+score(e),0)/etapas.length;
+
+    let status = media > 0.75 ? "🟢 Performance Forte"
+               : media > 0.6 ? "🟡 Atenção Estratégica"
+               : "🔴 Risco Operacional";
+
+    document.getElementById("indicadorGlobal").innerHTML =
+    "Indicador Global: " + status;
+}
+
+/* ===========================
+   GRÁFICO DE BARRAS
+=========================== */
+function atualizarGrafico(){
+
+    if(!grafico){
+
+        grafico = new Chart(document.getElementById("grafico"),{
+            type:'bar',
+            data:{
+                labels:etapas.map(e=>e.nome),
+                datasets:[
+                    {
+                        label:"Tempo Atual",
+                        data:etapas.map(e=>e.real),
+                        backgroundColor:"rgba(33,150,243,0.7)"
+                    },
+                    {
+                        label:"Tempo Baseline",
+                        data:baseline.map(e=>e.real),
+                        backgroundColor:"rgba(255,99,132,0.6)"
+                    }
+                ]
+            },
+            options:{
+                responsive:true,
+                animation:{ duration:800 },
+                plugins:{ legend:{ position:'bottom' } }
+            }
+        });
+
+    } else {
+
+        grafico.data.datasets[0].data = etapas.map(e=>e.real);
+        grafico.data.datasets[1].data = baseline.map(e=>e.real);
+        grafico.update();
+    }
+}
+
+
+
+/* ===========================
+   ALERTAS VISUAIS
+=========================== */
+
+function verificarAlertas(){
+    etapas.forEach((e,i)=>{
+        let card = document.querySelectorAll(".card")[i];
+        let s = score(e);
+
+        if(s < 0.5){
+            card.style.border = "3px solid red";
+        } else if(s < 0.7){
+            card.style.border = "3px solid orange";
+        } else {
+            card.style.border = "3px solid green";
+        }
+    });
+}
+
+/* ===========================
+   ALGORITMO GENÉRICO SIMPLES
+=========================== */
+
+function otimizar(){
+
+    for(let i=0;i<etapas.length;i++){
+        etapas[i].real = Math.max(1, etapas[i].real - Math.random()*2);
+    }
+
+    // Atualiza baseline automaticamente após otimização
+    baseline = JSON.parse(JSON.stringify(etapas));
+
+    render();
+    recalcularSistema();
+    alert("Otimização concluída. Baseline atualizado.");
+}
+
+/*
+function otimizar(){
+    for(let i=0;i<etapas.length;i++){
+        etapas[i].real = Math.max(1, etapas[i].real - Math.random()*2);
+    }
+    render();
+    recalcularSistema();
+    alert("Otimização concluída.");
+}
+*/
+
+function restaurarMetricasPadrao(){
+
+    // Restaura etapas
+    etapas = JSON.parse(JSON.stringify(metricasPadrao));
+
+    // Atualiza baseline automaticamente
+    baseline = JSON.parse(JSON.stringify(metricasPadrao));
+
+    render();
+    recalcularSistema();
+
+    alert("Métricas padrão ideais restauradas.");
+}
+
+
+/* ===========================
+   EXPORTAR PDF
+=========================== */
+
+function exportarRelatorio(){
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    let y=20;
+
+    doc.setFontSize(16);
+    doc.text("Relatório Executivo - Supply Chain 4.0",20,y);
+    y+=10;
+
+    let scoreMedio = etapas.reduce((acc,e)=>acc+score(e),0)/etapas.length;
+    doc.text("Score Médio: "+scoreMedio.toFixed(2),20,y);
+    y+=10;
+
+    doc.text("Gargalo: "+detectarGargalo(),20,y);
+    y+=15;
+
+    etapas.forEach(e=>{
+        doc.text(`${e.nome} | Real:${e.real} | Custo:${e.custo}`,20,y);
+        y+=8;
+    });
+
+    doc.save("Relatorio_SupplyChain.pdf");
+}
+
+/* ===========================
+   EXPORTAR EXCEL
+=========================== */
+
+function exportarExcel(){
+
+    if(typeof XLSX === "undefined"){
+        alert("Biblioteca XLSX não carregada.");
+        return;
+    }
+
+    let dados = etapas.map(e=>({
+        Etapa:e.nome,
+        Estimado:e.estimado,
+        Atual:e.real,
+        Baseline:baseline.find(b=>b.nome===e.nome).real,
+        Custo:e.custo,
+        Score:score(e).toFixed(2)
+    }));
+
+    let wb = XLSX.utils.book_new();
+    let ws = XLSX.utils.json_to_sheet(dados);
+
+    XLSX.utils.book_append_sheet(wb, ws, "SupplyChain");
+    XLSX.writeFile(wb, "Relatorio_SupplyChain.xlsx");
+}
+
+/* ===========================
+   INICIALIZAÇÃO
+=========================== */
+
+render();
+recalcularSistema();
+
+
+
+/* ===========================
+   SCRIPT COMPLETO DO RELATÓRIO EXECUTIVO
+=========================== */
+function gerarRelatorioExecutivo(){
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    let y = 20;
+
+ /* ==========
+     CAPA
+   ==========*/
+
+    doc.setFontSize(18);
+    doc.text("RELATÓRIO EXECUTIVO", 20, y);
+    y += 10;
+
+    doc.setFontSize(12);
+    doc.text("Supply Chain 4.0 - Inteligência Preditiva", 20, y);
+    y += 10;
+
+    let dataAtual = new Date().toLocaleString();
+    doc.text("Data de Emissão: " + dataAtual, 20, y);
+    y += 20;
+
+    /*============================
+    INDICADORES ESTRATÉGICOS
+    ============================*/
+
+    let scoreMedio = etapas.reduce((acc,e)=>acc+score(e),0)/etapas.length;
+    let gargalo = detectarGargalo();
+
+    doc.setFontSize(14);
+    doc.text("Resumo Estratégico", 20, y);
+    y += 10;
+
+    doc.setFontSize(11);
+    doc.text("Score Médio Global: " + scoreMedio.toFixed(2), 20, y);
+    y += 8;
+
+    doc.text("Gargalo Operacional Identificado: " + gargalo, 20, y);
+    y += 15;
+
+    /* ============================
+     INTERPRETAÇÃO AUTOMÁTICA
+    ============================*/
+
+    let interpretacao = "";
+
+    if(scoreMedio > 0.75){
+        interpretacao = "A cadeia de suprimentos apresenta alta eficiência operacional com baixo risco sistêmico.";
+    }
+    else if(scoreMedio > 0.6){
+        interpretacao = "O desempenho operacional é moderado, exigindo atenção estratégica em pontos específicos.";
+    }
+    else{
+        interpretacao = "Risco operacional elevado identificado. Recomenda-se intervenção imediata.";
+    }
+
+    doc.text("Análise Interpretativa:", 20, y);
+    y += 8;
+
+    doc.text(doc.splitTextToSize(interpretacao, 170), 20, y);
+    y += 20;
+
+    /*============================
+    ANÁLISE DETALHADA POR ETAPA
+    ============================*/
+
+    doc.setFontSize(14);
+    doc.text("Análise por Etapa", 20, y);
+    y += 10;
+
+    doc.setFontSize(10);
+
+    etapas.forEach(e=>{
+        let variacao = ((e.real - e.realAnterior)/e.realAnterior*100).toFixed(1);
+
+        let linha = `${e.nome} | Atual: ${e.real} | Anterior: ${e.realAnterior} | Variação: ${variacao}% | Score: ${score(e).toFixed(2)}`;
+
+        doc.text(doc.splitTextToSize(linha,170), 20, y);
+        y += 8;
+    });
+
+    y += 10;
+
+   /*============================
+    GRÁFICO NO PDF
+    ============================*/
+
+    doc.addPage();
+    doc.setFontSize(14);
+    doc.text("Visualização Analítica", 20, 20);
+
+    let canvas = document.getElementById("grafico");
+    let imgData = canvas.toDataURL("image/png");
+
+    doc.addImage(imgData, "PNG", 15, 30, 180, 90);
+
+   /*============================
+    RECOMENDAÇÕES EXECUTIVAS
+   ============================*/
+
+    doc.addPage();
+    doc.setFontSize(14);
+    doc.text("Recomendações Estratégicas", 20, 20);
+
+    doc.setFontSize(11);
+
+    let recomendacoes = [
+        "1. Mitigar gargalo identificado através de realocação de recursos.",
+        "2. Implementar monitoramento contínuo preditivo.",
+        "3. Revisar contratos logísticos para otimização de custo.",
+        "4. Aplicar algoritmo genético periodicamente para simulação de eficiência."
+    ];
+
+    let posY = 35;
+
+    recomendacoes.forEach(r=>{
+        doc.text(doc.splitTextToSize(r,170), 20, posY);
+        posY += 10;
+    });
+
+   /*============================
+    ASSINATURA
+    ============================*/
+
+    doc.addPage();
+    doc.text("Validação Executiva", 20, 30);
+
+    let hash = btoa(JSON.stringify(etapas)).substring(0,30);
+
+    doc.text("Hash de Integridade: " + hash, 20, 50);
+    doc.text("Diretor de Operações ___________________________", 20, 80);
+
+    doc.save("Relatorio_Executivo_Estrategico.pdf");
+}
+
+   /* ============================
+   SCRIPT DO MATHJAX
+    ============================*/
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+
+
+</script>
+
+
+
+</body>
+</html>
