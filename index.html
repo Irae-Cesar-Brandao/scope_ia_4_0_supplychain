@@ -156,9 +156,9 @@ EXPLICAÇÃO MATEMÁTICA DO MODELO
 }
 
 
-/* ===============================
+/* -------------------------------------
 RESPONSIVIDADE MOBILE
-=============================== */
+------------------------------------- */
 
 @media (max-width:768px){
 
@@ -184,9 +184,44 @@ RESPONSIVIDADE MOBILE
     }
 
 }
+
+
+/* -------------------------------------
+EXPLICAÇÃO CIENTÍFICA
+------------------------------------- */
+.explicacao-cientifica {
+    background-color: white;        /* fundo branco */
+    border: 3px solid blue;         /* contorno azul */
+    padding: 20px;                  /* espaço interno */
+    border-radius: 10px;            /* cantos arredondados */
+    text-align: justify;             /* texto justificado */
+}
+
+.explicacao-cientifica h2 {
+    text-align: center;              /* título centralizado */
+    color: blue;
+    font-size: 50px;
+    -webkit-text-stroke: 1px black; /* contorno preto no texto */
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.2); /* sombra leve 3D */
+    margin-bottom: 20px;
+}
+
+.explicacao-cientifica h3 {
+    color: #1565c0;
+    margin-top: 20px;
+}
+
+
+
 </style>
 
+<!---------------------------------------
+ FINAL ESTILIZAÇÃO CSS
+------------------------------------- -->
 
+<!---------------------------------------
+ INICIO FRONT-END (PÁGINA)
+------------------------------------- -->
 </head>
 
 <body>
@@ -195,25 +230,34 @@ RESPONSIVIDADE MOBILE
 
 <div class="sidebar">
 
-    <h2>SCOPE-IA 4.0</h2>
-    <h3>Sistema de Controle Operacional Preditivo Estruturado com IA</h3>
+    <h2 style="font-size:50px; color: blue; text-shadow: 2px 4px 0 white, 4px 4px 0 rgba(255,255,255,0.5);  -webkit-text-stroke: 2px black; /* contorno preto */">SCOPE-IA 4.0</h2>
+    <h3>"Sistema de Controle Operacional Preditivo Estruturado com IA"</h3>
     <h5>Desenvolvedor: Iraê César Brandão</h5>
-    <h5>Elaborado em: 23 fev. 2026</h5>
+    <h6>Período de elaboração: 30 jan. 2026 a 23 fev. 2026</h6>
+<hr><hr>
 
+
+<div class="main">
+        <h2 style="font-size:50px; color: blue; text-shadow: 2px 4px 0 white, 4px 4px 0 rgba(255,255,255,0.5);  
+-webkit-text-stroke: 2px black; /* contorno preto */">DASHOBOARD EXECUTIVO</h2>
+
+<!---------------------------------------
+    BOTÕES DO DE EXECUÇÃO
+------------------------------------- -->
     <div class="botoes">
-        <button onclick="recalcularSistema()">Atualizar Métricas</button>
-        <button onclick="otimizar()">Rodar Algoritmo Genético</button>
+        <button onclick="atualizarTudo()">Atualizar Métricas</button>
+        <button onclick="otimizar()">Rodar Algoritmo Genérico</button>
         <button onclick="restaurarMetricasPadrao()">Restaurar Métricas Padrão</button>
         <button onclick="exportarRelatorio()">Exportar PDF</button>
         <button onclick="exportarExcel()">Exportar Excel</button>
         <button onclick="gerarRelatorioExecutivo()">Relatório Executivo Estratégico</button>
     </div>
 
+<hr>
 
 
 
-<div class="main">
-    <h1 style= "color: blue;">DASHOBOARD EXECUTIVO</h1>
+
     <h2 id="indicadorGlobal"></h2>
     <div class="grid" id="etapas"></div>
     <canvas id="grafico"></canvas>
@@ -222,8 +266,108 @@ RESPONSIVIDADE MOBILE
 <!-- ----------------------------------------------------------------------- 
 ORIENTAÇÕES COMPLETAS SOBRE O SISTEMA 
  ----------------------------------------------------------------------- -->
+<!-- -------------------
+     TUTORIAL DE USO
+---------------------- -->
+
+<div class="card" style="background:#f0f4f8; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); margin-top:30px;">
+    <h2 style="font-size:50px; color: blue; text-shadow: 2px 4px 0 white, 4px 4px 0 rgba(255,255,255,0.5);  -webkit-text-stroke: 2px black; /* contorno preto */">TUTORIAL DE USO AVANÇADO</h2>
+
+    <p style="text-align:justify; margin-top:15px;">
+        O <b>SCOPE-IA 4.0</b> é um sistema de controle operacional preditivo para a cadeia de suprimentos. 
+        Ele permite que gestores ajustem métricas, analisem resultados e tomem decisões estratégicas com base em dados preditivos.
+    </p>
+
+    <h3 style="color:#1565c0; margin-top:20px;">1. Inserção de Valores nos Campos</h3>
+    <p style="text-align:justify;">
+        - Cada etapa possui campos de <b>Estimado</b>, <b>Real</b> e <b>Custo</b>.  
+        - <b>Estimado:</b> tempo planejado para a execução da etapa.  
+        - <b>Real:</b> tempo efetivamente observado (ou previsto por simulação).  
+        - <b>Custo:</b> valor monetário associado à etapa.  
+        <br>
+        Insira os valores conforme o cenário atual ou simulado. O sistema recalcula automaticamente o <b>Score</b> e a <b>Variação vs Baseline</b> para cada etapa.
+    </p>
+
+    <h3 style="color:#1565c0; margin-top:20px;">2. Interpretação dos Resultados</h3>
+    <p style="text-align:justify;">
+        - Cada etapa recebe um <b>Score</b> (0 a 1) que combina eficiência operacional e custo.  
+        - A <b>Variação vs Baseline</b> indica se a etapa melhorou ou piorou em relação aos valores de referência.  
+        - O <b>Indicador Global</b> mostra o desempenho geral:  
+            <span style="color:green;">🟢 Forte</span>, <span style="color:orange;">🟡 Atenção Estratégica</span>, <span style="color:red;">🔴 Risco Operacional</span>.  
+        - As bordas coloridas nos cards ajudam a identificar rapidamente gargalos: vermelho indica atenção imediata.
+    </p>
+
+    <h3 style="color:#1565c0; margin-top:20px;">3. Como Tomar Decisões</h3>
+    <p style="text-align:justify;">
+        - Utilize o <b>Score</b> e a <b>Variação vs Baseline</b> para priorizar intervenções.  
+        - Etapas com <b>score baixo ou aumento significativo da variação</b> devem ser analisadas para realocação de recursos ou otimização de processos.  
+        - O <b>Indicador Global</b> auxilia a visão macro, indicando se a cadeia como um todo está performando bem ou precisa de atenção.
+    </p>
+
+    <h3 style="color:#1565c0; margin-top:20px;">4. Algoritmo Genérico</h3>
+    <p style="text-align:justify;">
+        Clique em <b>Rodar Algoritmo Genérico</b> para simular otimizações automáticas na cadeia.  
+        O sistema ajusta os valores de <b>Real</b> e recalcula scores e variações, permitindo testar cenários de melhoria sem alterar dados reais.
+    </p>
+
+    <h3 style="color:#1565c0; margin-top:20px;">5. Exportação e Relatórios</h3>
+    <p style="text-align:justify;">
+        - <b>Exportar PDF:</b> gera relatório simplificado das métricas atuais.  
+        - <b>Exportar Excel:</b> cria planilha com todas as etapas, scores e variações.  
+        - <b>Relatório Executivo Estratégico:</b> inclui análises detalhadas, gráficos e recomendações, pronto para decisões gerenciais.
+    </p>
+
+    <h3 style="color:#1565c0; margin-top:20px;">6. Tabela Resumo</h3>
+    <table style="width:100%; border-collapse:collapse; margin-top:10px; font-size:14px;">
+        <tr style="background:#1565c0; color:white;">
+            <th style="padding:10px; border:1px solid #ccc;">Seção</th>
+            <th style="padding:10px; border:1px solid #ccc;">Finalidade / Dicas de Uso</th>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ccc;">Métricas</td>
+            <td style="padding:10px; border:1px solid #ccc;">
+                Ajuste valores estimados e reais. Observe a variação vs baseline e o score para identificar melhorias ou problemas.
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ccc;">Indicador Global</td>
+            <td style="padding:10px; border:1px solid #ccc;">
+                Mostra a performance geral da cadeia e ajuda a priorizar decisões estratégicas.
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ccc;">Algoritmo Genérico</td>
+            <td style="padding:10px; border:1px solid #ccc;">
+                Simula otimizações, ajusta métricas automaticamente e permite testar cenários de melhoria.
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ccc;">Exportação</td>
+            <td style="padding:10px; border:1px solid #ccc;">
+                Gere relatórios PDF ou Excel para análises gerenciais e apresentações executivas.
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ccc;">Decisões Estratégicas</td>
+            <td style="padding:10px; border:1px solid #ccc;">
+                Use scores, variações e cores dos cards para identificar gargalos e definir ações corretivas ou preventivas.
+            </td>
+        </tr>
+    </table>
+
+    <p style="text-align:justify; margin-top:15px; font-style:italic; color:#555;">
+        Dica: Sempre verifique a variação vs baseline antes de tomar decisões; pequenas alterações podem impactar o score global e o desempenho da cadeia.
+    </p>
+</div>
+
+<!-- -------------------
+     SOBRE O ESTUDO
+---------------------- -->
+<h2 style="font-size:50px; color: blue; text-shadow: 2px 4px 0 white, 4px 4px 0 rgba(255,255,255,0.5);  
+-webkit-text-stroke: 2px black; /* contorno preto */">SOBRE O ESTUDO</h2>
 
 <footer class="footer-estudo">
+
 
 <div class="footer-container">
 
@@ -301,26 +445,45 @@ Otimização de reaproveitamento.
 <hr>
 
 <h3>Impacto nos Macroprocessos SCM</h3>
-
+<h5> A Gestão da Cadeia de Suprimentos (Supply Chain Management - SCM), CRM, ISCM e SRM representam os três macroprocessos principais que garantem a eficiência e a coordenação, desde o fornecedor até o consumidor final. Os impactos nos Macroproesso são:</h5>
 <table>
 <tr>
-<th>Macroprocesso</th>
+<th>Macroprocesso </th>
 <th>Impacto Estratégico da IA</th>
+<th>Significado do Macroprocesso</th>
 </tr>
 
 <tr>
-<td><b>CRM</b></td>
-<td>Previsão de comportamento do cliente e personalização.</td>
+<td><b>CRM (Customer Relationship Management)</b></td>
+<td>Previsão do comportamento do cliente.
+<br>Ofereça personalização.
+<br>Antecipação da demanda sazonal.</td>
+<td><b>Foco:</b> Gerenciar a interface entre a empresa e seus clientes finais.
+<br><b>Processos:</b> Inclui marketing, vendas, gerenciamento de pedidos e atendimento ao cliente.
+<br><b>Objetivo:</b> Melhorar o relacionamento, aumentar a lealdade do cliente e impulsionar as vendas.
+<br><b>Na cadeia:</b> Garante que a demanda do cliente seja compreendida e atendida de forma eficiente.</td>
 </tr>
 
 <tr>
-<td><b>ISCM</b></td>
-<td>Planejamento integrado e redução de custos operacionais.</td>
+<td><b>ISCM (Internal Supply Chain Management)</b></td>
+<td>Planejamento integrado automatizado.
+<br>Redução dos custos operacionais.
+<br>Melhor aproveitamento da capacidade produtiva.</td>
+<td><b>Foco:</b> Gerenciar os processos internos da empresa.
+<br><b>Processos:</b> Inclui planejamento estratégico, gestão de produção, controle de estoque, armazenagem e atendimento de pedidos internamente.
+<br><b>Objetivo:</b> Garantir a eficiência operacional e o fluxo contínuo de materiais e informações entre as áreas da empresa.
+<br><b>Na cadeia:</b> Funciona como o elo entre o fornecedor (SRM) e o cliente (CRM), processando a matéria-prima ou mercadoria.</td>
 </tr>
 
 <tr>
-<td><b>SRM</b></td>
-<td>Monitoramento contínuo de fornecedores e avaliação de risco.</td>
+<td><b>SRM (Supplier Relationship Management)</b></td>
+<td>Monitoramento contínuo do desempenho.
+<br>Avaliação preditiva de riscos.
+<br>Tomada de decisões baseada em dados.</td>
+<td><b>Foco:</b> Gerenciar a interface entre a empresa e seus fornecedores.
+<br><b>Processos:</b> Avaliação, seleção, homologação de fornecedores, negociação de contratos e gestão de riscos.
+<br><b>Objetivo:</b> Construir parcerias estratégicas, reduzir custos, aumentar a confiabilidade e garantir a qualidade dos insumos.
+<br><b>Na cadeia:</b> Assegura que o fluxo de materiais para dentro da empresa (inbound) não seja interrompido</td>
 </tr>
 
 </table>
@@ -328,13 +491,18 @@ Otimização de reaproveitamento.
 <hr>
 <hr>
 
+
+</footer>
+</div>
+
+
 <!-- --------------------------------------------------------- 
 EXPLICAÇÃO FÓRMULAS CIENTÍFICAS
 ---------------------------------------------------------- -->
 
 <div class="explicacao-cientifica">
 
-<h2>Formalização Matemática do Modelo Analítico</h2>
+<h2 style="font-size:50px; color: blue; text-shadow: 2px 4px 0 white, 4px 4px 0 rgba(255,255,255,0.5);  -webkit-text-stroke: 2px black; /* contorno preto */">Formalização Matemática do Modelo Analítico</h2>
 
 <p>
 Considere a Cadeia de Suprimentos composta por \( n \) etapas:
@@ -408,7 +576,7 @@ T_i^{real} > 0
 \]
 
 <p>
-Este modelo caracteriza-se como um sistema determinístico multicritério linear
+CONSIDERAÇÕES: Este modelo caracteriza-se como um sistema determinístico multicritério linear
 com otimização heurística aplicada à gestão da cadeia de suprimentos.
 </p>
 
@@ -421,28 +589,24 @@ com otimização heurística aplicada à gestão da cadeia de suprimentos.
 
 <h3>Referências </h3>
 
-<ul class="referencias">
-<li>Choi, T.-M., Chan, H. K., & Yue, X. (2019). IEEE Transactions on Cybernetics.</li>
-<li>Christopher, M. (2016). Logistics & Supply Chain Management (5ª ed.). Pearson.</li>
-<li>Lambert, D. M., Cooper, M. C., & Pagh, J. D. (1998). The International Journal of Logistics Management.</li>
-<li>Lee, H. L. (2004). The Triple-A Supply Chain. Harvard Business Review.</li>
-<li>Sheffi, Y. (2005). The Resilient Enterprise. MIT Press.</li>
-</ul>
+<h6 style="font-size:12px;">
+- Choi, T.-M., Chan, H. K., & Yue, X. (2019). IEEE Transactions on Cybernetics.<br><br>
+- Christopher, M. (2016). Logistics & Supply Chain Management (5ª ed.). Pearson.<br><br>
+- Lambert, D. M., Cooper, M. C., & Pagh, J. D. (1998). The International Journal of Logistics Management.<br><br>
+- Lee, H. L. (2004). The Triple-A Supply Chain. Harvard Business Review.<br><br>
+- Sheffi, Y. (2005). The Resilient Enterprise. MIT Press.
+</h6>
 <hr>
 
 
 
 </div>
 
-<footer style="background:#0d47a1; color:white; text-align:center; padding:15px; margin-top:40px; font-size:14px;">
+<footer style="background:#0d47a1; color:white; text-align:center; padding:15px; margin-top:40px; font-size:10px;">
 © 2026 Luck Way® – Iraê César Brandão. 
 Todos os direitos reservados. 
 Este sistema, seus algoritmos, estrutura matemática e arquitetura computacional são protegidos por direitos autorais e legislação aplicável, destinado para fins educacionais e sem fins lucrativos.
 </footer>
-</footer>
-
-</div>
-
 
 <script>
 
@@ -492,6 +656,11 @@ function render(){
 /* ===========================
    LÓGICA ANALÍTICA
 =========================== */
+function atualizarTudo(){
+    render();              // garante que os cards existam
+    recalcularSistema();   // atualiza os valores, scores e gráficos
+}
+
 
 function atualizar(i,campo,valor){
     etapas[i][campo] = Number(valor);
@@ -601,29 +770,15 @@ function verificarAlertas(){
 =========================== */
 
 function otimizar(){
-
     for(let i=0;i<etapas.length;i++){
         etapas[i].real = Math.max(1, etapas[i].real - Math.random()*2);
     }
-
-    // Atualiza baseline automaticamente após otimização
-    baseline = JSON.parse(JSON.stringify(etapas));
-
+   // Atualiza baseline automaticamente após otimização
     render();
     recalcularSistema();
     alert("Otimização concluída. Baseline atualizado.");
 }
 
-/*
-function otimizar(){
-    for(let i=0;i<etapas.length;i++){
-        etapas[i].real = Math.max(1, etapas[i].real - Math.random()*2);
-    }
-    render();
-    recalcularSistema();
-    alert("Otimização concluída.");
-}
-*/
 
 function restaurarMetricasPadrao(){
 
@@ -668,6 +823,7 @@ function exportarRelatorio(){
     });
 
     doc.save("Relatorio_SupplyChain.pdf");
+
 }
 
 /* ===========================
@@ -695,6 +851,7 @@ function exportarExcel(){
 
     XLSX.utils.book_append_sheet(wb, ws, "SupplyChain");
     XLSX.writeFile(wb, "Relatorio_SupplyChain.xlsx");
+    
 }
 
 /* ===========================
@@ -820,7 +977,7 @@ function gerarRelatorioExecutivo(){
         "1. Mitigar gargalo identificado através de realocação de recursos.",
         "2. Implementar monitoramento contínuo preditivo.",
         "3. Revisar contratos logísticos para otimização de custo.",
-        "4. Aplicar algoritmo genético periodicamente para simulação de eficiência."
+        "4. Aplicar algoritmo genérico periodicamente para simulação de eficiência."
     ];
 
     let posY = 35;
@@ -855,6 +1012,39 @@ window.MathJax = {
   },
   svg: { fontCache: 'global' }
 };
+
+   /* ============================
+      TRAVAR A CÓPIA CONTEÚDO COM REF. AUTOR
+    ============================*/
+// ---------- BLOQUEAR CLIQUE DIREITO ----------
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault(); // Bloqueia o menu do botão direito
+    alert("Copiar conteúdo não é permitido sem referência ao autor '© 2026 Iraê César Brandão - https://luckway.com.br' .");
+});
+
+// ---------- BLOQUEAR CTRL+C E CTRL+X ----------
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'x')) {
+        e.preventDefault(); // Bloqueia copiar e recortar
+        alert("Copiar/Recortar desativado. Cite o autor! '© 2026 Iraê César Brandão - https://luckway.com.br'");
+    }
+});
+
+// ---------- ADICIONAR REFERÊNCIA AUTOMÁTICA AO COPIAR ----------
+document.addEventListener('copy', function(e) {
+    e.preventDefault(); // Impede o comportamento padrão
+
+    let selectedText = window.getSelection().toString();
+    if (!selectedText) return; // Se não tiver nada selecionado, não faz nada
+
+    // Adiciona crédito automático
+    let textWithCredit = selectedText + "\n\n" + "© 2026 Iraê César Brandão - https://luckway.com.br";
+
+    // Adiciona ao clipboard
+    e.clipboardData.setData('text/plain', textWithCredit);
+
+    alert("Texto copiado com referência automática!");
+});
 
 
 </script>
