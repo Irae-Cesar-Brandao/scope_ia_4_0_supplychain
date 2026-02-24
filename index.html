@@ -271,95 +271,58 @@ ORIENTAÇÕES COMPLETAS SOBRE O SISTEMA
 ---------------------- -->
 
 <div class="card" style="background:#f0f4f8; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); margin-top:30px;">
-    <h3 style="font-size:50px; color: blue; text-shadow: 2px 4px 0 white, 4px 4px 0 rgba(255,255,255,0.5);  -webkit-text-stroke: 2px black; /* contorno preto */">TUTORIAL DE USO AVANÇADO</h3>
+    <h3 style="font-size:50px; color: blue; text-shadow: 2px 4px 0 white, 4px 4px 0 rgba(255,255,255,0.5);  -webkit-text-stroke: 2px black;">
+        TUTORIAL DE USO AVANÇADO
+    </h3>
 
-    <p style="text-align:justify; margin-top:15px;">
-        O <b>SCOPE-IA 4.0</b> é um sistema de controle operacional preditivo para a cadeia de suprimentos. 
-        Ele permite que gestores ajustem métricas, analisem resultados e tomem decisões estratégicas com base em dados preditivos.
-    </p>
-
-    <h3 style="color:#1565c0; margin-top:20px;">1. Inserção de Valores nos Campos</h3>
-    <p style="text-align:justify;">
-        - Cada etapa possui campos de <b>Estimado</b>, <b>Real</b> e <b>Custo</b>.  
-        - <b>Estimado:</b> tempo planejado para a execução da etapa.  
-        - <b>Real:</b> tempo efetivamente observado (ou previsto por simulação).  
-        - <b>Custo:</b> valor monetário associado à etapa.  
-        <br>
-        Insira os valores conforme o cenário atual ou simulado. O sistema recalcula automaticamente o <b>Score</b> e a <b>Variação vs Baseline</b> para cada etapa.
-    </p>
-
-    <h3 style="color:#1565c0; margin-top:20px;">2. Interpretação dos Resultados</h3>
-    <p style="text-align:justify;">
-        - Cada etapa recebe um <b>Score</b> (0 a 1) que combina eficiência operacional e custo.  
-        - A <b>Variação vs Baseline</b> indica se a etapa melhorou ou piorou em relação aos valores de referência.  
-        - O <b>Indicador Global</b> mostra o desempenho geral:  
-            <span style="color:green;">🟢 Forte</span>, <span style="color:orange;">🟡 Atenção Estratégica</span>, <span style="color:red;">🔴 Risco Operacional</span>.  
-        - As bordas coloridas nos cards ajudam a identificar rapidamente gargalos: vermelho indica atenção imediata.
-    </p>
-
-    <h3 style="color:#1565c0; margin-top:20px;">3. Como Tomar Decisões</h3>
-    <p style="text-align:justify;">
-        - Utilize o <b>Score</b> e a <b>Variação vs Baseline</b> para priorizar intervenções.  
-        - Etapas com <b>score baixo ou aumento significativo da variação</b> devem ser analisadas para realocação de recursos ou otimização de processos.  
-        - O <b>Indicador Global</b> auxilia a visão macro, indicando se a cadeia como um todo está performando bem ou precisa de atenção.
-    </p>
-
-    <h3 style="color:#1565c0; margin-top:20px;">4. Algoritmo Genérico</h3>
-    <p style="text-align:justify;">
-        Clique em <b>Rodar Algoritmo Genérico</b> para simular otimizações automáticas na cadeia.  
-        O sistema ajusta os valores de <b>Real</b> e recalcula scores e variações, permitindo testar cenários de melhoria sem alterar dados reais.
-    </p>
-
-    <h3 style="color:#1565c0; margin-top:20px;">5. Exportação e Relatórios</h3>
-    <p style="text-align:justify;">
-        - <b>Exportar PDF:</b> gera relatório simplificado das métricas atuais.  
-        - <b>Exportar Excel:</b> cria planilha com todas as etapas, scores e variações.  
-        - <b>Relatório Executivo Estratégico:</b> inclui análises detalhadas, gráficos e recomendações, pronto para decisões gerenciais.
-    </p>
-
-    <h3 style="color:#1565c0; margin-top:20px;">6. Tabela Resumo</h3>
-    <table style="width:100%; border-collapse:collapse; margin-top:10px; font-size:14px;">
+    <table style="width:100%; border-collapse:collapse; margin-top:20px; font-size:14px;">
         <tr style="background:#1565c0; color:white;">
             <th style="padding:10px; border:1px solid #ccc;">Seção</th>
-            <th style="padding:10px; border:1px solid #ccc;">Finalidade / Dicas de Uso</th>
+            <th style="padding:10px; border:1px solid #ccc;">Descrição / Instruções</th>
         </tr>
         <tr>
-            <td style="padding:10px; border:1px solid #ccc;">Métricas</td>
+            <td style="padding:10px; border:1px solid #ccc;">1. Inserção de Valores</td>
             <td style="padding:10px; border:1px solid #ccc;">
-                Ajuste valores estimados e reais. Observe a variação vs baseline e o score para identificar melhorias ou problemas.
+                Preencha os campos <b>Estimado</b>, <b>Real</b> e <b>Custo</b> em cada etapa.  
+                O sistema recalcula automaticamente <b>Score</b> e <b>Variação vs Baseline</b>.
             </td>
         </tr>
         <tr>
-            <td style="padding:10px; border:1px solid #ccc;">Indicador Global</td>
+            <td style="padding:10px; border:1px solid #ccc;">2. Interpretação dos Resultados</td>
             <td style="padding:10px; border:1px solid #ccc;">
-                Mostra a performance geral da cadeia e ajuda a priorizar decisões estratégicas.
+                <b>Score:</b> combina eficiência e custo.<br>
+                <b>Variação vs Baseline:</b> melhoria ou piora.<br>
+                <b>Indicador Global:</b> 🟢 Forte, 🟡 Atenção, 🔴 Risco.
             </td>
         </tr>
         <tr>
-            <td style="padding:10px; border:1px solid #ccc;">Algoritmo Genérico</td>
+            <td style="padding:10px; border:1px solid #ccc;">3. Tomada de Decisões</td>
             <td style="padding:10px; border:1px solid #ccc;">
-                Simula otimizações, ajusta métricas automaticamente e permite testar cenários de melhoria.
+                Use <b>Score</b> e <b>Variação</b> para priorizar intervenções.  
+                Etapas com score baixo ou grande variação exigem análise.
             </td>
         </tr>
         <tr>
-            <td style="padding:10px; border:1px solid #ccc;">Exportação</td>
+            <td style="padding:10px; border:1px solid #ccc;">4. Algoritmo Genérico</td>
             <td style="padding:10px; border:1px solid #ccc;">
-                Gere relatórios PDF ou Excel para análises gerenciais e apresentações executivas.
+                Clique em <b>Rodar Algoritmo Genérico</b> para simular otimizações automáticas.
             </td>
         </tr>
         <tr>
-            <td style="padding:10px; border:1px solid #ccc;">Decisões Estratégicas</td>
+            <td style="padding:10px; border:1px solid #ccc;">5. Exportação e Relatórios</td>
             <td style="padding:10px; border:1px solid #ccc;">
-                Use scores, variações e cores dos cards para identificar gargalos e definir ações corretivas ou preventivas.
+                Gere PDF ou Excel; relatórios executivos estratégicos disponíveis.
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ccc;">6. Resumo / Dicas</td>
+            <td style="padding:10px; border:1px solid #ccc;">
+                Verifique sempre <b>Variação vs Baseline</b> antes de decisões.  
+                Pequenas alterações impactam score global.
             </td>
         </tr>
     </table>
-
-    <p style="text-align:justify; margin-top:15px; font-style:italic; color:#555;">
-        Dica: Sempre verifique a variação vs baseline antes de tomar decisões; pequenas alterações podem impactar o score global e o desempenho da cadeia.
-    </p>
 </div>
-
 <!-- -------------------
      SOBRE O ESTUDO
 ---------------------- -->
