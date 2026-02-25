@@ -15,6 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
+
 <style>
 
 body{
@@ -248,12 +249,14 @@ EXPLICAÇÃO CIENTÍFICA
     BOTÕES DO DE EXECUÇÃO
 ------------------------------------- -->
     <div class="botoes">
+        <button onclick="otimizar()" style="background-color: #28a745;"> Rodar Algoritmo </button>
+        <button onclick="restaurarMetricasPadrao()"style="background-color: red;">Restaurar Padrão </button>
         <button onclick="atualizarTudo()">Atualizar Métricas</button>
-        <button onclick="otimizar()">Rodar Algoritmo Genérico</button>
-        <button onclick="restaurarMetricasPadrao()">Restaurar Métricas Padrão</button>
         <button onclick="exportarRelatorio()">Exportar PDF</button>
         <button onclick="exportarExcel()">Exportar Excel</button>
         <button onclick="gerarRelatorioExecutivo()">Relatório Executivo Estratégico</button>
+        <button id="btnImportar" style="background-color: yellow; color: black">Importar Planilha</button>
+			<input type="file" id="inputPlanilha" accept=".xlsx,.xls" style="display:none">
     </div>
 
 <hr>
@@ -1009,6 +1012,54 @@ document.addEventListener('copy', function(e) {
     e.clipboardData.setData('text/plain', textWithCredit);
 
     alert("Texto copiado com referência automática!");
+});
+
+
+/* ===========================
+   IMPORTAR EXCEL DO PC
+=========================== */
+
+document.getElementById("btnImportar").addEventListener("click", function(){
+    document.getElementById("inputPlanilha").click();
+});
+
+document.getElementById("inputPlanilha").addEventListener("change", function(event){
+
+    const arquivo = event.target.files[0];
+    if(!arquivo) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: "array" });
+
+        const nomeAba = workbook.SheetNames[0];
+        const planilha = workbook.Sheets[nomeAba];
+
+        const dadosImportados = XLSX.utils.sheet_to_json(planilha);
+
+        // Atualiza o array etapas com os dados importados
+        etapas = dadosImportados.map(linha => ({
+            nome: linha.Etapa,
+            estimado: Number(linha.Estimado),
+            real: Number(linha.Atual),
+            realAnterior: Number(linha.Baseline),
+            custo: Number(linha.Custo)
+        }));
+
+        // Atualiza baseline automaticamente
+        baseline = JSON.parse(JSON.stringify(etapas));
+
+        render();
+        recalcularSistema();
+
+        alert("Planilha importada com sucesso!");
+    };
+
+    reader.readAsArrayBuffer(arquivo);
+
 });
 
 
