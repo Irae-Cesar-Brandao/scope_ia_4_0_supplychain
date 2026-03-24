@@ -2,7 +2,7 @@ SCOPE-IA 4.0: A Multicriteria Predictive Optimization Framework for Intelligent 
 
 Author: Iraê César Brandão
 Affiliation: Independent Researcher – Brazil
-
+Link:  https://irae-cesar-brandao.github.io/scope_ia_4_0_supplychain/   
 
 # SCOPE-IA 4.0
 
@@ -19,8 +19,6 @@ Simply open your browser, translate it to the desired language if needed, and ex
 
 ## License
 This project is released under a non-commercial license for academic purposes.
-
-Link:  https://irae-cesar-brandao.github.io/scope_ia_4_0_supplychain/   
 
 Abstract: The increasing complexity of global supply chains demands predictive,
 adaptive and optimization-oriented decision systems. This study introduces SCOPE-IA 4.0 
